@@ -5,6 +5,8 @@
    <application
         android:label="flutter_native_features"
         android:icon="@mipmap/ic_launcher">
+         <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyC0D3V3ONb5muafVBUqZVHFp2ykSAcG60o"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

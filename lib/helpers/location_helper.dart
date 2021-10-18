@@ -1,7 +1,7 @@
-const apiKey = 'pk.eyJ1IjoiYWxpMjE1MjIxOCIsImEiOiJja3V3YTB1bTc0MmtrMzNvNnRmY3lpOWg4In0.vBJ5ZM_QJyyM4pqOEeMFrw';
+const apiKey = 'AIzaSyC0D3V3ONb5muafVBUqZVHFp2ykSAcG60o';
 
 class LocationHelper {
-  static String generatePreviewImageUrl({double? latitude, double? longitude}){
-   return 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-l($longitude,$latitude)/$longitude,$latitude,14.25,0,0/600x300?access_token=$apiKey';   
-  } 
+  static String generatePreviewImageUrl({required double latitude, required double longitude,}) {
+    return 'https://maps.googleapis.com/maps/api/staticmap?center=&$latitude,$longitude&zoom=16&size=600x300&maptype=roadmap&markers=color:red%7Clabel:A%7C$latitude,$longitude&key=$apiKey';
+  }
 }

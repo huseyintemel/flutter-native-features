@@ -10,6 +10,8 @@
 	<string>We need camera!</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need location!</string>
+	<key>flutter.embedded_views_preview</key>
+	<true/>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

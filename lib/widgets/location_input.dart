@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_features/helpers/location_helper.dart';
+import 'package:flutter_native_features/screens/map_screen.dart';
 import 'package:location/location.dart';
 
 class LocationInput extends StatefulWidget {
@@ -14,12 +15,20 @@ class _LocationInputState extends State<LocationInput> {
   Future<void> getUserLocation() async{
     final locationData = await Location().getLocation();
     final staticMapImageUrl = LocationHelper.generatePreviewImageUrl(
-      latitude: locationData.latitude,
-      longitude: locationData.longitude,
+      latitude: locationData.latitude!,
+      longitude: locationData.longitude!,
     );
     setState(() {
       previewImageUrl = staticMapImageUrl;
     });
+  }
+
+  Future<void> selectOnMap() async{
+   final selectedLocation = await Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => MapScreen(isSelecting: true,)));
+
+    if(selectedLocation == null){
+      return;
+    }
   }
 
   @override
@@ -38,7 +47,7 @@ class _LocationInputState extends State<LocationInput> {
           mainAxisAlignment : MainAxisAlignment.spaceBetween,
           children: [
           ElevatedButton.icon(icon: const Icon(Icons.location_on),label:const Text('Current Location'),onPressed: getUserLocation,),
-          ElevatedButton.icon(icon: const Icon(Icons.map),label:const Text('Select on map'),onPressed: (){},)
+          ElevatedButton.icon(icon: const Icon(Icons.map),label:const Text('Select on map'),onPressed: selectOnMap,)
 
         ],)
       ],
